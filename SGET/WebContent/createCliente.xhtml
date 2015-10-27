@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:body>
+    
+    	<ui:composition template="/template/layout.xhtml">
+    		<ui:define name="content">
+    		
+    		<h:form>
+    			<h:messages/>
+    			<h:panelGrid columns="2">
+    				<p:outputLabel for="clienteNome" value="#{msgs.clienteNome}"/>
+    				<p:inputText id="clienteNome" value="#{clienteMB.cliente.nome}"/>
+    				
+    				<p:outputLabel for="clienteDataNasc" value="#{msgs.clienteDataNasc}"/>
+    				<p:inputMask id="clienteDataNasc" value="#{clienteMB.cliente.dataNascimento}" mask="99/99/9999"/>
+    				
+    				<p:outputLabel for="clienteCpf" value="#{msgs.clienteCpf}"/>
+    				<p:inputMask id="clienteCpf" value="#{clienteMB.cliente.cpf}" mask="999.999.999-99"/>
+    				
+    				<p:outputLabel for="clienteRg" value="#{msgs.clienteRg}"/>
+    				<p:inputText id="clienteRg" value="#{clienteMB.cliente.rg}"/>
+    				
+    				<p:outputLabel for="clienteEmail" value="#{msgs.clienteEmail}"/>
+    				<p:inputText id="clienteEmail" value="#{clienteMB.cliente.email}"/>
+    				
+    				<p:outputLabel for="clienteTel" value="#{msgs.clienteTel}"/>
+    				<p:inputMask id="clienteTel" value="#{clienteMB.cliente.telefone}" mask="(99) 9999-9999"/>
+    				
+    				<p:outputLabel for="clienteCel" value="#{msgs.clienteCel}"/>
+    				<p:inputMask id="clienteCel" value="#{clienteMB.cliente.celular}" mask="(99) 9999-9999"/>
+    				
+    				<p:outputLabel for="clienteBairro" value="#{msgs.clienteBairro}"/>
+    				<p:inputText id="clienteBairro" value="#{clienteMB.cliente.bairro}"/>
+    				
+    				<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.create}" />
+    				<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.cancel}" immediate="true"/>	
+    					
+    			</h:panelGrid>   			
+    				
+    		</h:form>
+    		
+    		</ui:define>    	
+    	</ui:composition>
+    </h:body>
+    
+</html>
+
