@@ -7,18 +7,13 @@
     xmlns:p="http://primefaces.org/ui">
     
     <h:body>
-    
-    	<ui:composition template="/template/layout.xhtml">
+    	<ui:composition template="/pages/template/layout2.xhtml">
     		<ui:define name="content">
-    		
     		<h:form>
     			<h:messages/>
     			<h:panelGrid columns="2">
     				<p:outputLabel for="clienteNome" value="#{msgs.clienteNome}"/>
     				<p:inputText id="clienteNome" value="#{clienteMB.cliente.nome}"/>
-    				
-    				<p:outputLabel for="clienteDataNasc" value="#{msgs.clienteDataNasc}"/>
-    				<p:inputMask id="clienteDataNasc" value="#{clienteMB.cliente.dataNascimento}" mask="99/99/9999"/>
     				
     				<p:outputLabel for="clienteCpf" value="#{msgs.clienteCpf}"/>
     				<p:inputMask id="clienteCpf" value="#{clienteMB.cliente.cpf}" mask="999.999.999-99"/>
@@ -38,14 +33,17 @@
     				<p:outputLabel for="clienteBairro" value="#{msgs.clienteBairro}"/>
     				<p:inputText id="clienteBairro" value="#{clienteMB.cliente.bairro}"/>
     				
-    				<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.create}" />
-    				<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.cancel}" immediate="true"/>	
-    					
+    				<p:outputLabel for="clienteDataNasc" value="#{msgs.clienteDataNasc}"/>
+    				<p:inputMask id="clienteDataNasc" value="#{clienteMB.cliente.dataNascimento}" mask="99/99/9999"/>
+    				    				
+    				<h:panelGrid columns="2">
+    					<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.create}" />
+    					<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.cancel}" immediate="true"/>	
+    				</h:panelGrid>
     			</h:panelGrid>   			
     				
     		</h:form>
-    		
-    		</ui:define>    	
+    		</ui:define>
     	</ui:composition>
     </h:body>
     
