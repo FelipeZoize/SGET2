@@ -37,7 +37,7 @@
     				<p:inputMask id="clienteDataNasc" value="#{clienteMB.cliente.dataNascimento}" mask="99/99/9999"/>
     				    				
     				<h:panelGrid columns="2">
-    					<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.create}" />
+    					<h:commandButton action="#{clienteMB.createCliente()}" value="#{clienteMB.action}" />
     					<h:commandButton action="#{clienteMB.createCliente()}" value="#{msgs.cancel}" immediate="true"/>	
     				</h:panelGrid>
     			</h:panelGrid>   			

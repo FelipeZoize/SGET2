@@ -1,7 +1,10 @@
 package com.sgetejb.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
 
 public abstract class GenericDAO<T> {
 
@@ -33,9 +36,13 @@ public abstract class GenericDAO<T> {
 	public T find(int entityID){
 		return em.find(entityClass, entityID);
 	}
-	
-	
-	
+		
+	@SuppressWarnings({"rawtypes","unchecked"})
+	public List<T> findAll() {        
+		CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        return em.createQuery(cq).getResultList();
+    }
 	
 	
 	

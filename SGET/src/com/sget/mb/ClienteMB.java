@@ -1,5 +1,7 @@
 package com.sget.mb;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.faces.application.FacesMessage;
@@ -19,14 +21,42 @@ public class ClienteMB {
 	
 	private static final String LIST_ALL_CLIENTES = "listAllClientes";
 	private static final String STAY_IN_THE_SAME_PAGE = null;
+	private static final String FORM_CLIENTE = "createCliente";
 	
 	private Cliente cliente;
+	
+	/** String para ser usada no form de cadastrar/atualizar  */
+	private String action = "Cadastrar";
 	
 	public String createCliente(){
 		try {
 			clienteFacade.save(cliente);
 		} catch (EJBException e) {
 			sendErrorMessageToUser("Erro, verificar se todos os campos estão corretos!");
+			return STAY_IN_THE_SAME_PAGE;
+		}
+		
+		sendInfoMessageToUser("Operação Realizada com Sucesso");
+		
+		cliente = null;
+		
+		return LIST_ALL_CLIENTES;
+	}
+	
+	public String updateCliente(){
+		return FORM_CLIENTE;
+	}
+	
+	public List<Cliente> getAllClientes(){
+		return clienteFacade.findAll();
+	}
+	
+	public String deleteCliente(){
+		try {
+			clienteFacade.delete(cliente);
+		} catch (EJBException e) {
+			sendErrorMessageToUser("Erro ao deletar o cliente!");
+			
 			return STAY_IN_THE_SAME_PAGE;
 		}
 		
@@ -58,6 +88,14 @@ public class ClienteMB {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
 	}
 	
 	

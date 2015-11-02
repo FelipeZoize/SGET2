@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:body>
+    	<ui:composition template="/pages/template/layout2.xhtml">
+    	  <ui:define name="content">
+    	  <h:form id="listClientes">
+    		
+    		<h:messages />
+    		
+    		<p:dataTable value="#{clienteMB.allClientes}" var="cliente">
+    			<h:inputHidden value="#{cliente.id}" />
+    		
+    			<p:column headerText="#{msgs.clienteNome}">
+    				<h:outputText value="#{cliente.nome}" />
+    			</p:column>
+    			<p:column headerText="#{msgs.clienteCpf}">
+    				<h:outputText value="#{cliente.cpf}" />
+    			</p:column>
+    			<p:column headerText="#{msgs.clienteCel}">
+    				<h:outputText value="#{cliente.celular}" />
+    			</p:column>
+    			<p:column >
+    				<p:commandButton value="#{msgs.update}" action="#{clienteMB.updateCliente()}">
+    					<f:setPropertyActionListener value="#{cliente}" target="#{clienteMB.cliente}"/>
+    					<f:setPropertyActionListener value="#{msgs.update}" target="#{clienteMB.action}"/>
+    				</p:commandButton>
+    				<p:commandButton value="#{msgs.delete}" action="#{clienteMB.deleteCliente()}" update="listClientes">
+    					<p:confirm header="Confirmação" message="Você tem certeza?" icon="ui-icon-alert"/>
+    					<f:setPropertyActionListener value="#{cliente}" target="#{clienteMB.cliente}"/>
+    				</p:commandButton>    			
+    				
+    				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+    					<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+       					<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+       				</p:confirmDialog>	
+    			</p:column>
+    		
+    		</p:dataTable>
+    	 </h:form>
+    	 </ui:define>
+      </ui:composition>
+   </h:body>
+ </html>

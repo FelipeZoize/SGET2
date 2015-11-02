@@ -1,5 +1,7 @@
 package com.sgetejb.facade;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -35,6 +37,10 @@ public class ClienteFacadeImp implements ClienteFacade{
 	public Cliente find(int entityID) {
 		
 		return clienteDAO.find(entityID);
+	}
+	
+	public List<Cliente> findAll(){
+		return clienteDAO.findAll();
 	}
 
 	private void isClienteWithAllData(Cliente cliente){
