@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import com.sgetejb.facade.ClienteFacade;
+import com.sgetejb.dao.ClienteDAO;
 import com.sgetejb.model.Cliente;
 
 @ManagedBean
@@ -17,7 +17,7 @@ import com.sgetejb.model.Cliente;
 public class ClienteMB {
 
 	@EJB
-	private ClienteFacade clienteFacade;
+	private ClienteDAO clienteDAO;
 	
 	private static final String LIST_ALL_CLIENTES = "listAllClientes";
 	private static final String STAY_IN_THE_SAME_PAGE = null;
@@ -30,7 +30,7 @@ public class ClienteMB {
 	
 	public String createCliente(){
 		try {
-			clienteFacade.save(cliente);
+			clienteDAO.save(cliente);
 		} catch (EJBException e) {
 			sendErrorMessageToUser("Erro, verificar se todos os campos estão corretos!");
 			return STAY_IN_THE_SAME_PAGE;
@@ -48,12 +48,12 @@ public class ClienteMB {
 	}
 	
 	public List<Cliente> getAllClientes(){
-		return clienteFacade.findAll();
+		return clienteDAO.findAll();
 	}
 	
 	public String deleteCliente(){
 		try {
-			clienteFacade.delete(cliente);
+			clienteDAO.delete(cliente);
 		} catch (EJBException e) {
 			sendErrorMessageToUser("Erro ao deletar o cliente!");
 			

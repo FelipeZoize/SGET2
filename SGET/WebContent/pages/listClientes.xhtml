@@ -13,7 +13,7 @@
     		
     		<h:messages />
     		
-    		<p:dataTable value="#{clienteMB.allClientes}" var="cliente">
+    		<p:dataTable value="#{clienteMB.allClientes}" var="cliente" id="resultTable">
     			<h:inputHidden value="#{cliente.id}" />
     		
     			<p:column headerText="#{msgs.clienteNome}">
