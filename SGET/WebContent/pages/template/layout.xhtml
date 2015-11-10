@@ -7,31 +7,29 @@
 
 
 	<h:head>
+		<h:outputStylesheet library="css" name="main.css"/>
+<!-- 		<h:outputStylesheet library="css" name="bootstrap.min.css"/>-->
+ 		<title>Sistema de Gerenciamento de Estúdio de Tatuagem</title>
 	</h:head>
 	
 	<h:body>
 	
-		<div id="page">
-		
-			<div id="header">
-				<ui:insert name="header">
-<!-- 				  <ui:include src="template/header.xhmtl" />			
- -->				</ui:insert>
+		<div id="page">		
+						
+			<div id="pageLeftColum">
+				<div class="iconPage">
+					<ui:insert name="logo_page"/>
+				</div>	
 			</div>
-			
-			<div id="content">
-				<ui:insert name="content">
-<!-- 					<ui:include src="template/content.xhtml" />
- -->				</ui:insert>			
+						
+			<div id="pageRightColum">	
+				<ui:insert name="content"/>						
 			</div>
-			
-			<div id="footer">
-				<ui:insert name="footer">
-<!-- 					<ui:include src="template/footer.xhtml"/>
- -->				</ui:insert>			
-			</div>
-			
+						
 		</div>
+		<dir id="footer">
+			<ui:insert name="footer"/>
+		</dir>
 	
 	</h:body>
 	

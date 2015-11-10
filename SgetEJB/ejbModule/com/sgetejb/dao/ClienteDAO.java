@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.sgetejb.dao.GenericDAO;
 import com.sgetejb.model.Cliente;
 
 @Stateless
@@ -24,8 +22,8 @@ public class ClienteDAO extends GenericDAO<Cliente> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Cliente> findClientes(String parameterToSearch){
-		Query query = super.getEm().createQuery("select c from Cliente c where nome = :parameterToSearch ",Cliente.class);
-		query.setParameter("parameterToSearch", parameterToSearch);
+		Query query = super.getEm().createQuery("select c from Cliente c where nome like :parameterToSearch  ",Cliente.class);
+		query.setParameter("parameterToSearch", parameterToSearch+"%");
 		return query.getResultList();
 	}
 	
