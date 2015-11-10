@@ -60,13 +60,15 @@
 						<p:outputPanel>
 							<h:outputText value="Buscar na tabela:" />
 							<p:inputText id="globalFilter" 
-								onkeyup="PF('clienteTable').filter()" style="width:150px"
+								value="#{clienteMB.searchParameter}" style="width:150px"
 								placeholder="Digite aqui" />
+								<p:commandButton styleClass="btSearch" icon="ui-icon-search" title="Buscar"
+							action="#{clienteMB.findClientes()}" update="resultTable"/>
 						</p:outputPanel>
 					</f:facet>
 					<h:inputHidden value="#{cliente.id}" />
 
-					<p:column headerText="#{msgs.clienteNome}" resizable="false">
+					<p:column headerText="#{msgs.clienteNome}" resizable="false" sortBy="#{cliente.nome}">
 						<h:outputText value="#{cliente.nome}" />
 					</p:column>
 					<p:column headerText="#{msgs.clienteCpf}" >

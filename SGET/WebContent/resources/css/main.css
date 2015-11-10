@@ -146,3 +146,10 @@ th{
 td{
 	font-size: 0.9em;
 }
+
+.btSearch{	
+    width: 40px;
+    height: 30px;
+    margin-left: 0px;
+    border-top-width: 0px;		
+}
